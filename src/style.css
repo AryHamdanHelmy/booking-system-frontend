@@ -1,0 +1,68 @@
+@import 'tailwindcss';
+
+/* Plus Jakarta Sans — dirancang Tokotype untuk identitas kota Jakarta. */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&display=swap');
+
+@theme {
+  --color-ink: #0f2854;
+  --color-pine: #1c4d8d;
+  --color-moss: #4988c4;
+  --color-sky: #bde8f5;
+  --color-bone: #f5f9fc;
+  --color-line: #d7e3ee;
+  --color-amber: #b8791b;
+  --color-clay: #a8392c;
+
+  --text-display:    2.5rem;
+    --text-display--line-height: 1.1;
+    --text-display--letter-spacing: -0.03em;
+    --text-display--font-weight: 800;
+
+    --text-heading:    1.5rem;
+    --text-heading--line-height: 1.25;
+    --text-heading--letter-spacing: -0.02em;
+    --text-heading--font-weight: 700;
+
+    --text-title:      1.125rem;
+    --text-title--line-height: 1.4;
+    --text-title--letter-spacing: -0.01em;
+    --text-title--font-weight: 600;
+
+    --text-label:      0.75rem;
+    --text-label--line-height: 1.3;
+    --text-label--letter-spacing: 0.08em;
+    --text-label--font-weight: 700;
+
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scrollbar-gutter: stable;
+}
+
+body {
+  background-color: var(--color-bone);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Angka jam & nominal tidak bergeser saat nilainya berubah. */
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-moss);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
