@@ -10,6 +10,7 @@ import NotFoundPage from '@/pages/NotFoundPage';
 import ProtectedRoute from './ProtectedRoute';
 import BookingPage from '../pages/public/BookingPage';
 import BookingStatusPage from '../pages/public/BookingStatusPage';
+import BookingListPage from '../pages/admin/BookingListPage';
 
 export default function AppRoutes() {
   return (
@@ -27,6 +28,7 @@ export default function AppRoutes() {
         <Route element={<AdminLayout />}>
           <Route path={ROUTES.DASHBOARD} element={<DashboardPage />} />
           <Route path={ROUTES.REVENUE} element={<RevenuePage />} />
+          <Route path={ROUTES.BOOKINGS} element={<BookingListPage />} />
           <Route path={ROUTES.SETTINGS} element={<SettingsPage />} />
         </Route>
       </Route>
