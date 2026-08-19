@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui';
-import { UserPlus } from 'lucide-react';
+import { IoWalk } from "react-icons/io5";
 
 /**
  * Di HP: tombol bundar melayang di atas tab bawah, tetap satu ketukan
@@ -13,11 +13,11 @@ export function DashboardWalkinButton({ onClick }) {
         type="button"
         onClick={onClick}
         aria-label="Mulai walk-in"
-        className="fixed bottom-20 right-4 z-20 flex h-14 w-14 items-center justify-center
-          rounded-full bg-pine/80 text-white backdrop-blur-xs shadow-lg shadow-ink/20
+        className="fixed bottom-20 right-4 z-20 flex h-12 w-12 items-center justify-center
+          rounded-full bg-pine/70 text-white backdrop-blur-xs shadow-lg shadow-ink/20
           transition-colors hover:bg-ink lg:hidden"
       >
-        <UserPlus size={24} strokeWidth={1.75} />
+        <IoWalk size={24} strokeWidth={1.75} />
       </button>
 
       <div className="hidden rounded-xl border border-line bg-pine/5 p-5 text-center lg:block">

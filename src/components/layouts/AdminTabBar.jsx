@@ -8,7 +8,7 @@ import { NAV_ITEMS } from '@/constants/nav';
 export function AdminTabBar() {
   return (
     <nav
-      className="fixed inset-x-0 bottom-0 z-20 border-t border-line bg-white/80
+      className="fixed inset-x-0 bottom-0 z-20 border-t border-line bg-white/90
         pb-[env(safe-area-inset-bottom,0px)] backdrop-blur-md md:hidden"
       aria-label="Navigasi utama"
     >
@@ -20,7 +20,7 @@ export function AdminTabBar() {
               end={end}
               className={({ isActive }) =>
                 `flex h-16 flex-col items-center justify-center gap-1 text-label transition-colors ${
-                  isActive ? 'text-pine' : 'text-ink/45'
+                  isActive ? 'text-pine' : 'text-ink/55'
                 }`
               }
             >

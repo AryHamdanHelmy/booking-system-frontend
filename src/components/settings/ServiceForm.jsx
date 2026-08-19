@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import { errorMessage } from '@/api/client';
 import { serviceApi } from '@/api/masterApi';
-import { Button, FormField, Input, Modal } from '@/components/ui';
+import { Button, FormField, Input, Modal, Textarea} from '@/components/ui';
 import { formatNumberInput, parseNumberInput } from '@/utils/formatCurrency';
 
 const EMPTY = {
   name: '',
   duration_minutes: '60',
   buffer_minutes: '15',
+  description: '',
   price: '',
 };
 
@@ -27,6 +28,7 @@ export function ServiceForm({ isOpen, service, onClose, onSaved }) {
             name: service.name,
             duration_minutes: String(service.duration_minutes),
             buffer_minutes: String(service.buffer_minutes),
+            description: service.description ?? '',
             price: String(service.price),
           }
         : EMPTY,
@@ -45,6 +47,7 @@ export function ServiceForm({ isOpen, service, onClose, onSaved }) {
       name: form.name.trim(),
       duration_minutes: Number(form.duration_minutes),
       buffer_minutes: Number(form.buffer_minutes),
+      description: form.description.trim() || null,
       price: Number(form.price),
     };
 
@@ -93,6 +96,17 @@ export function ServiceForm({ isOpen, service, onClose, onSaved }) {
             placeholder="Refleksi Kaki 60 Menit"
             value={form.name}
             onChange={(e) => update('name')(e.target.value)}
+          />
+        </FormField>
+
+        <FormField label="Deskripsi service" htmlFor="service-description">
+          <Textarea
+            id="service-description"
+            rows={2}
+            maxLength={225}
+            placeholder="Deskripsi service"
+            value={form.description}
+            onChange={(e) => update('description')(e.target.value)}
           />
         </FormField>
 

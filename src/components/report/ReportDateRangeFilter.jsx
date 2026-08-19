@@ -12,8 +12,8 @@ export function ReportDateRangeFilter({ preset, range, onPreset, onRangeChange }
             onClick={() => onPreset(item.key)}
             className={`h-9 rounded-lg border px-3 text-label transition-colors ${
               preset === item.key
-                ? 'border-pine bg-pine/8 text-pine'
-                : 'border-line bg-white text-ink/60 hover:border-moss'
+                ? 'border-pine bg-pine text-white'
+                : 'border-line bg-white text-ink/60 hover:border-pine'
             }`}
           >
             {item.label}

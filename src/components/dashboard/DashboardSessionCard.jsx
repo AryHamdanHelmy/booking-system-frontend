@@ -40,17 +40,17 @@ export function DashboardSessionCard({
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <p className="tnum text-title leading-none text-ink">
+          <p className="tnum text-title leading-none text-pine">
             {formatTime(booking.start_at)}
-            <span className="text-ink/35"> – {formatTime(booking.end_at)}</span>
+            <span className="text-pine/45"> – {formatTime(booking.end_at)}</span>
           </p>
           <p className="mt-1.5 truncate text-title text-ink">
             {booking.customer?.name}
           </p>
-          <p className="mt-1 text-label text-ink/55">
+          <p className="mt-1 text-label text-ink">
             {booking.service?.name}
           </p>
-          <p className=" text-label text-ink/55">
+          <p className=" text-label text-pine">
             {booking.therapist?.name ?? 'Belum ditentukan'}
           </p>
         </div>
@@ -58,7 +58,7 @@ export function DashboardSessionCard({
         <div className="flex shrink-0 flex-col items-end gap-1.5">
           <BookingStatusBadge status={booking.status} />
           {isWalkIn && (
-            <span className="text-label text-ink/45">Walk-in</span>
+            <span className="text-label text-pine/55">Walk-in</span>
           )}
         </div>
       </div>
@@ -102,7 +102,7 @@ export function DashboardSessionCard({
           </Button>
         )}
 
-        <span className="tnum ml-auto text-sm font-semibold text-ink/60">
+        <span className="tnum ml-auto text-sm font-semibold text-white/60">
           {formatCurrency(booking.price_snapshot)}
         </span>
       </div>

@@ -30,7 +30,7 @@ export function DashboardSummaryBar({ date, summary }) {
             <p className="tnum my-2 mx-2 text-heading leading-none text-ink lg:text-3xl">
               {item.value}
             </p>
-            <p className="my-2 mx-2 text-label uppercase text-ink/45 lg:mt-2 lg:text-xs">
+            <p className="my-2 mx-2 text-label uppercase text-ink/55 lg:mt-2 lg:text-xs">
               {item.label}
             </p>
           </Card>

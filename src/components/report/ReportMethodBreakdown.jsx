@@ -7,7 +7,7 @@ export function ReportMethodBreakdown({ byMethod = [], total = 0 }) {
 
   return (
     <Card className="p-4">
-      <p className="text-xs font-semibold uppercase tracking-wide text-ink/45">
+      <p className="text-xs font-semibold uppercase tracking-wide text-ink">
         Metode bayar
       </p>
 
@@ -33,7 +33,7 @@ export function ReportMethodBreakdown({ byMethod = [], total = 0 }) {
                     style={{ width: `${persen}%` }}
                   />
                 </div>
-                <span className="tnum w-14 shrink-0 text-right text-xs text-ink/45">
+                <span className="tnum w-14 shrink-0 text-right text-xs text-pine">
                   {item.count}&times; · {persen}%
                 </span>
               </div>

@@ -32,7 +32,7 @@ export function BookingDatePicker({ value, onChange }) {
                 px-3 py-2 transition-colors ${
                   selected
                     ? 'border-pine bg-pine/8 text-pine'
-                    : 'border-line bg-white text-ink hover:border-moss'
+                    : 'border-line bg-white text-ink hover:border-pine'
                 }`}
             >
               <span className="text-[11px] font-semibold uppercase">

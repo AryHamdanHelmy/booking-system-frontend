@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Plus } from 'lucide-react';
+import { IoAddCircle } from "react-icons/io5";
 import { errorMessage } from '@/api/client';
 import { serviceApi, therapistApi } from '@/api/masterApi';
 import { Button, EmptyState, Spinner } from '@/components/ui';
@@ -120,7 +120,7 @@ export default function SettingsPage() {
               isTherapistTab ? setTherapistForm(undefined) : setServiceForm(undefined)
             }
           >
-            <Plus size={18} strokeWidth={2} />
+            <IoAddCircle size={19} strokeWidth={2} />
             {isTherapistTab ? 'Tambah terapis' : 'Tambah layanan'}
           </Button>
 

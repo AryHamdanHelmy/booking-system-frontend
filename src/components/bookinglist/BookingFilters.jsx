@@ -1,4 +1,4 @@
-import { Search, X } from 'lucide-react';
+import { IoClose, IoSearch } from "react-icons/io5";
 import { Input } from '@/components/ui';
 import { BOOKING_STATUS, STATUS_LABEL } from '@/constants/bookingStatus';
 import { BOOKING_SOURCE, SOURCE_LABEL } from '@/constants/bookingSource';
@@ -29,7 +29,7 @@ function Chips({ options, value, onChange, label }) {
           className={`h-9 shrink-0 rounded-lg border px-3 text-label
             transition-colors ${
               value === option.value
-                ? 'border-pine bg-pine/8 text-pine'
+                ? 'border-moss bg-pine text-white'
                 : 'border-line bg-white text-ink/60 hover:border-moss'
             }`}
         >
@@ -47,7 +47,7 @@ export function BookingFilters({ filters, onChange }) {
   return (
     <div className="space-y-3">
       <div className="relative">
-        <Search
+        <IoSearch
           size={18}
           className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-ink/35"
         />
@@ -60,11 +60,11 @@ export function BookingFilters({ filters, onChange }) {
         {filters.q && (
           <button
             type="button"
-            onClick={() => updateQuery('')}
+            onClick={() => updateQ('')}
             aria-label="Hapus pencarian"
             className="absolute right-2 top-1/2 -translate-y-1/2 rounded p-1.5 text-ink/40 hover:text-ink"
           >
-            <X size={16} />
+            <IoClose size={16} />
           </button>
         )}
       </div>

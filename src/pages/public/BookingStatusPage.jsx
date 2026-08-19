@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
-import { MessageCircle } from 'lucide-react';
+import { IoLogoWhatsapp } from "react-icons/io5";
 import { errorMessage } from '@/api/client';
 import { publicApi } from '@/api/publicApi';
 import { BookingCodeCard } from '@/components/booking/BookingCodeCard';
@@ -183,7 +183,7 @@ export default function BookingStatusPage() {
               rounded-lg border border-line bg-white text-sm font-semibold text-ink
               transition-colors hover:border-moss"
           >
-            <MessageCircle size={18} />
+            <IoLogoWhatsapp size={18} />
             Hubungi outlet untuk ubah jadwal
           </a>
         )

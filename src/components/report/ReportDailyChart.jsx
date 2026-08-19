@@ -12,7 +12,7 @@ export function ReportDailyChart({ byDay = [] }) {
 
   return (
     <Card className="p-4">
-      <p className="text-xs font-semibold uppercase tracking-wide text-ink/45">
+      <p className="text-label text-ink">
         Per hari
       </p>
 
@@ -30,11 +30,11 @@ export function ReportDailyChart({ byDay = [] }) {
             >
               <div className="flex h-24 w-full items-end">
                 <div
-                  className="w-full rounded-t bg-moss"
+                  className="w-full rounded-t bg-pine"
                   style={{ height: `${tinggi}%` }}
                 />
               </div>
-              <span className="tnum text-[10px] text-ink/45">
+              <span className="tnum text-label text-ink">
                 {tanggal.getDate()}
               </span>
             </div>

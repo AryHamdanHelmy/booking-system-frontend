@@ -37,8 +37,8 @@ export function ReportTransactionList({ transactions = [] }) {
         return (
           <section key={date}>
             <div className="flex items-baseline justify-between gap-3 px-1">
-              <h3 className="text-sm font-bold text-ink">{dayLabel(date)}</h3>
-              <span className="tnum text-sm font-semibold text-ink/55">
+              <h3 className="text-sm font-bold text-pine">{dayLabel(date)}</h3>
+              <span className="tnum text-label text-ink/55">
                 {formatCurrency(subtotal)}
               </span>
             </div>
@@ -51,10 +51,10 @@ export function ReportTransactionList({ transactions = [] }) {
                       <p className="truncate font-semibold text-ink">
                         {trx.booking?.customer_name ?? '-'}
                       </p>
-                      <p className="truncate text-sm text-ink/55">
+                      <p className="truncate text-label text-ink">
                         {trx.booking?.service_name}
                       </p>
-                      <p className="tnum mt-0.5 text-xs text-ink/40">
+                      <p className="tnum mt-0.5 text-label text-pine">
                         {formatTime(trx.paid_at)} · {trx.booking?.therapist_name} ·{' '}
                         {trx.invoice_number}
                       </p>
@@ -64,7 +64,7 @@ export function ReportTransactionList({ transactions = [] }) {
                       <p className="tnum font-bold text-ink">
                         {formatCurrency(trx.total)}
                       </p>
-                      <p className="mt-0.5 text-xs text-ink/45">
+                      <p className="mt-0.5 text-label text-pine">
                         {trx.payment_method_label}
                       </p>
                     </div>

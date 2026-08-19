@@ -1,14 +1,14 @@
 import { useState } from 'react';
-import { Check, Copy, MessageCircle } from 'lucide-react';
+import { IoLogoWhatsapp, IoCalendar, IoCopy, IoCheckmark } from "react-icons/io5";
 import { Button } from '@/components/ui';
 import { OUTLET } from '@/constants/outlet';
+import { downloadIcs } from '@/utils/calendar';
 import { whatsappLink } from '@/utils/formatPhone';
 
 /**
  * Kode adalah satu-satunya cara pelanggan mengakses bookingnya —
  * tidak ada akun. Karena itu disediakan berlapis: tampil besar,
- * bisa disalin, dan bisa dikirim ke WhatsApp agar tersimpan permanen
- * di riwayat chat kedua pihak.
+ * bisa disalin, bisa dikirim ke WhatsApp, dan bisa masuk kalender.
  */
 export function BookingCodeCard({ booking }) {
   const [copied, setCopied] = useState(false);
@@ -57,23 +57,34 @@ export function BookingCodeCard({ booking }) {
         membatalkan booking.
       </p>
 
-      <div className="mt-4 flex gap-2">
-        <Button variant="secondary" className="flex-1" onClick={copy}>
-          {copied ? <Check size={18} /> : <Copy size={18} />}
-          {copied ? 'Tersalin' : 'Salin kode'}
-        </Button>
+      <div className="mt-4 space-y-2">
+        <div className="flex gap-2">
+          <Button variant="secondary" className="flex-1" onClick={copy}>
+            {copied ? <IoCheckmark size={18} /> : <IoCopy size={18} />}
+            {copied ? 'Tersalin' : 'Salin kode'}
+          </Button>
 
-        <a
-          href={whatsappLink(OUTLET.whatsapp, pesan)}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex h-11 flex-1 items-center justify-center gap-2
-            rounded-lg bg-pine px-4 text-sm font-semibold text-white
-            transition-colors hover:bg-ink"
+          <a
+            href={whatsappLink(OUTLET.whatsapp, pesan)}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex h-11 flex-1 items-center justify-center gap-2
+              rounded-lg bg-pine px-4 text-sm font-semibold text-white
+              transition-colors hover:bg-ink"
+          >
+            <IoLogoWhatsapp size={18} />
+            Kirim ke WA
+          </a>
+        </div>
+
+        <Button
+          variant="secondary"
+          className="w-full"
+          onClick={() => downloadIcs(booking)}
         >
-          <MessageCircle size={18} />
-          Kirim ke WA
-        </a>
+          <IoCalendar size={18} />
+          Simpan ke kalender
+        </Button>
       </div>
     </div>
   );

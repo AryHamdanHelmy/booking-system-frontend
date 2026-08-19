@@ -27,7 +27,7 @@ export default function AdminLayout() {
           <button
             type="button"
             onClick={handleLogout}
-            className="text-sm font-semibold text-ink/55"
+            className="text-label text-pine/55"
           >
             Keluar
           </button>

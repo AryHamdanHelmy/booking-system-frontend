@@ -20,7 +20,7 @@ export default function DashboardPage() {
   const [checkoutBooking, setCheckoutBooking] = useState(null);
 
   async function runAction(booking, fn) {
-    setPendingId(booking.id);
+    setPendingId(booking.booking_code);
     setActionError('');
 
     try {
@@ -34,10 +34,10 @@ export default function DashboardPage() {
   }
 
   const handleChangeStatus = (booking, status) =>
-    runAction(booking, () => bookingApi.updateStatus(booking.id, status));
+    runAction(booking, () => bookingApi.updateStatus(booking.booking_code, status));
 
   const handleNoShow = (booking) =>
-    runAction(booking, () => bookingApi.markNoShow(booking.id));
+    runAction(booking, () => bookingApi.markNoShow(booking.booking_code));
 
   const handleCheckout = (booking) => {setCheckoutBooking(booking)};
 

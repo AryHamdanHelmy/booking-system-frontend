@@ -12,6 +12,7 @@
   --color-line: #d7e3ee;
   --color-amber: #b8791b;
   --color-clay: #a8392c;
+  --color-pine: #007979;
 
   --text-display:    2.5rem;
     --text-display--line-height: 1.1;
@@ -54,7 +55,7 @@ body {
 }
 
 *:focus-visible {
-  outline: 2px solid var(--color-moss);
+  outline: 2px solid var(--color-pine);
   outline-offset: 2px;
 }
 

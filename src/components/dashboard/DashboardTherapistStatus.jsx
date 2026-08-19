@@ -1,10 +1,13 @@
-import { Card } from '@/components/ui';
 import { BOOKING_STATUS } from '@/constants/bookingStatus';
 import { formatTime } from '@/utils/formatTime';
 
 /**
  * Menjawab pertanyaan tersering di meja depan:
  * siapa yang bisa menangani tamu sekarang?
+ *
+ * Sengaja tidak memakai komponen Card — latar kartu perlu berubah
+ * saat terapis sedang menangani tamu, dan bg-white bawaan Card
+ * bertabrakan dengan latar yang ditimpa lewat className.
  */
 export function DashboardTherapistStatus({ therapists = [], bookings = [] }) {
   return (
@@ -28,9 +31,11 @@ export function DashboardTherapistStatus({ therapists = [], bookings = [] }) {
         const busy = Boolean(ongoing);
 
         return (
-          <Card
+          <div
             key={therapist.id}
-            className={`p-3 ${busy ? 'border-moss bg-moss/5' : ''}`}
+            className={`rounded-xl border p-3 transition-colors ${
+              busy ? 'border-moss bg-pine/5' : 'border-line bg-white'
+            }`}
           >
             <div className="flex items-center gap-1.5">
               <span
@@ -39,7 +44,7 @@ export function DashboardTherapistStatus({ therapists = [], bookings = [] }) {
                   busy ? 'bg-moss' : 'bg-ink/25'
                 }`}
               />
-              <p className="truncate text-title text-ink">{therapist.name}</p>
+              <p className="truncate text-title text-pine">{therapist.name}</p>
             </div>
 
             {busy ? (
@@ -47,7 +52,7 @@ export function DashboardTherapistStatus({ therapists = [], bookings = [] }) {
                 <p className="mt-2 truncate text-label text-ink/70">
                   {ongoing.customer?.name}
                 </p>
-                <p className="tnum mt-0.5 text-label text-moss">
+                <p className="tnum mt-0.5 text-label font-semibold text-clay">
                   selesai {formatTime(ongoing.end_at)}
                 </p>
               </>
@@ -59,7 +64,7 @@ export function DashboardTherapistStatus({ therapists = [], bookings = [] }) {
                 </p>
               </>
             )}
-          </Card>
+          </div>
         );
       })}
     </div>

@@ -42,13 +42,13 @@ export default function LoginPage() {
     <main className="flex min-h-dvh flex-col justify-center px-5 py-10 sm:items-center">
       <div className="w-full sm:max-w-sm">
         <div className="mb-8">
-          <p className="text-xs font-bold uppercase tracking-[0.18em] text-moss">
+          <p className="text-title text-pine">
             Refleksi
           </p>
-          <h1 className="mt-1 text-3xl font-extrabold leading-tight text-ink">
+          <h1 className="mt-1 text-heading text-ink">
             Masuk ke panel
           </h1>
-          <p className="mt-2 text-sm text-ink/55">
+          <p className="mt-2 text-label text-ink/55">
             Kelola jadwal terapis, walk-in, dan pembayaran.
           </p>
         </div>
