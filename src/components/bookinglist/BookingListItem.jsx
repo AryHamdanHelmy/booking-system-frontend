@@ -48,7 +48,7 @@ export function BookingListItem({ booking }) {
       </div>
 
       <div className="mt-2 flex flex-wrap items-center gap-2">
-        <span className="tnum text-label text-white/40">{booking.booking_code}</span>
+        <span className="tnum text-label text-ink/40">{booking.booking_code}</span>
         {booking.has_conflict && <DashboardConflictBadge />}
       </div>
     </Card>

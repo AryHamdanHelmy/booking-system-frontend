@@ -16,7 +16,7 @@ export function DashboardSummaryBar({ date, summary }) {
 
   return (
     <section>
-      <h1 className="text-heading font-extrabold leading-tight text-ink lg:text-3xl">
+      <h1 className="text-heading text-ink lg:text-3xl">
         Hari ini
       </h1>
       <p className="mt-0.5 text-label text-ink/50">{formatDateLong(date)}</p>

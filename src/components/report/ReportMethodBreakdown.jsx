@@ -27,7 +27,7 @@ export function ReportMethodBreakdown({ byMethod = [], total = 0 }) {
               </div>
 
               <div className="mt-1.5 flex items-center gap-2">
-                <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-line">
+                <div className="h-2 flex-1 overflow-hidden rounded-full bg-pine/20">
                   <div
                     className="h-full rounded-full bg-pine"
                     style={{ width: `${persen}%` }}

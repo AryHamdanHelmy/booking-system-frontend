@@ -4,15 +4,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&display=swap');
 
 @theme {
-  --color-ink: #0f2854;
-  --color-pine: #1c4d8d;
+  --color-ink: #224248;
   --color-moss: #4988c4;
   --color-sky: #bde8f5;
-  --color-bone: #f5f9fc;
-  --color-line: #d7e3ee;
+  --color-bone: #F5F5F0;
+  --color-line: #A1C398;
   --color-amber: #b8791b;
   --color-clay: #a8392c;
   --color-pine: #007979;
+  --color-card: #FCF8F8;
+  --color-layout: #F3F2EC;
 
   --text-display:    2.5rem;
     --text-display--line-height: 1.1;

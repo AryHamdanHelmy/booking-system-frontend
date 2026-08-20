@@ -4,12 +4,14 @@ import { errorMessage } from '@/api/client';
 import { publicApi } from '@/api/publicApi';
 import { BookingDatePicker } from '@/components/booking/BookingDatePicker';
 import { BookingServicePicker } from '@/components/booking/BookingServicePicker';
+import { BookingTherapistPicker } from '../../components/booking/BookingTherapistPicker';
 import { BookingSlotGrid } from '@/components/booking/BookingSlotGrid';
 import { Button, ChoiceGroup, FormField, Input } from '@/components/ui';
 import { useAvailability } from '@/hooks/useAvailability';
 import { useServices } from '@/hooks/useServices';
 import { formatCurrency } from '@/utils/formatCurrency';
 import { formatTime, toDateParam } from '@/utils/formatTime';
+import { useTherapists } from '../../hooks/useTherapists';
 
 const genderOptions = [
   { value: 'any',    label: 'Siapa saja' },
@@ -29,11 +31,13 @@ function Section({ title, children }) {
 export default function BookingPage() {
   const navigate = useNavigate();
   const { services, loading: loadingServices } = useServices();
+  const { therapists } = useTherapists();
 
   const [serviceId, setServiceId] = useState('');
   const [date, setDate]           = useState(toDateParam());
   const [gender, setGender]       = useState('any');
   const [startAt, setStartAt]     = useState('');
+  const [therapistId, setTherapistId] = useState('');
   const [name, setName]           = useState('');
   const [phone, setPhone]         = useState('');
   const [error, setError]         = useState('');
@@ -52,12 +56,29 @@ export default function BookingPage() {
     preferredGender: gender,
   });
 
+  const selectedSlot = useMemo(
+    () => slots.find((s) => s.start_at === startAt),
+    [slots, startAt],
+  );
+
+
   // Slot yang dipilih bisa hilang saat tanggal atau layanan berubah.
   useEffect(() => {
     if (startAt && !slots.some((s) => s.start_at === startAt && s.is_available)) {
       setStartAt('');
     }
   }, [slots, startAt]);
+
+  useEffect(() => {
+    if (!therapistId) return;
+ 
+    const masihBisa = selectedSlot?.available_therapist_ids?.includes(
+      Number(therapistId),
+    );
+ 
+    if (!masihBisa) setTherapistId('');
+  }, [selectedSlot, therapistId]);
+
 
   const selectedService = useMemo(
     () => services.find((s) => String(s.id) === String(serviceId)),
@@ -77,6 +98,7 @@ export default function BookingPage() {
         service_id: Number(serviceId),
         start_at: startAt,
         preferred_gender: gender,
+        therapist_id: therapistId ? Number(therapistId) : undefined,
       });
 
       navigate(`/booking/${booking.booking_code}`, {
@@ -134,6 +156,18 @@ export default function BookingPage() {
           onChange={setStartAt}
         />
       </Section>
+
+      {selectedSlot && (
+        <Section title="Terapis">
+          <BookingTherapistPicker
+            therapists={therapists}
+            availableIds={selectedSlot.available_therapist_ids ?? []}
+            value={therapistId}
+            onChange={setTherapistId}
+          />
+        </Section>
+      )}
+
 
       <Section title="Data Anda">
         <div className="space-y-4">

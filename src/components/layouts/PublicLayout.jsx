@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 export default function PublicLayout() {
   return (
     <div className="min-h-dvh">
-      <header className="border-b border-line bg-white">
+      <header className="border-b border-line bg-layout">
         <div className="mx-auto flex h-14 max-w-lg items-center px-5">
           <span className="text-title text-ink">
             Refleksi

@@ -8,7 +8,7 @@ import { NAV_ITEMS } from '@/constants/nav';
 export function AdminTabBar() {
   return (
     <nav
-      className="fixed inset-x-0 bottom-0 z-20 border-t border-line bg-white/90
+      className="fixed inset-x-0 bottom-0 z-20 border-t border-line bg-layout/70
         pb-[env(safe-area-inset-bottom,0px)] backdrop-blur-md md:hidden"
       aria-label="Navigasi utama"
     >

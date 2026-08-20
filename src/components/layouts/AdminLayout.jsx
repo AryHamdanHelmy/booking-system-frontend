@@ -20,7 +20,7 @@ export default function AdminLayout() {
       <div className="flex min-h-dvh flex-col md:pl-60">
         {/* Header ringkas, hanya di HP. Di desktop identitas ada di sidebar. */}
         <header className="flex h-14 items-center justify-between border-b border-line
-          bg-white px-4 lg:hidden">
+          bg-layout px-4 lg:hidden">
           <span className="text-label uppercase tracking-[0.18em] text-pine">
             Refleksi
           </span>
