@@ -90,13 +90,13 @@ export default function BookingStatusPage() {
       <Card className="p-5">
         <div className="flex items-start justify-between gap-3">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wide text-ink/45">
+            <p className="text-label uppercase tracking-wide text-pine">
               Jadwal
             </p>
             <p className="mt-1 font-bold text-ink">
               {formatDateLong(booking.start_at)}
             </p>
-            <p className="tnum mt-0.5 text-ink/70">
+            <p className="tnum mt-0.5 text-pine/70">
               {formatTimeRange(booking.start_at, booking.end_at)}
             </p>
           </div>
@@ -108,21 +108,21 @@ export default function BookingStatusPage() {
 
         <dl className="mt-4 space-y-2 border-t border-line pt-4 text-sm">
           <div className="flex justify-between gap-3">
-            <dt className="text-ink/55">Layanan</dt>
+            <dt className="text-pine">Layanan</dt>
             <dd className="text-right font-semibold text-ink">
               {booking.service?.name}
             </dd>
           </div>
 
           <div className="flex justify-between gap-3">
-            <dt className="text-ink/55">Terapis</dt>
+            <dt className="text-pine">Terapis</dt>
             <dd className="text-right font-semibold text-ink">
               {booking.therapist?.name ?? 'Ditentukan outlet'}
             </dd>
           </div>
 
           <div className="flex justify-between gap-3">
-            <dt className="text-ink/55">Biaya</dt>
+            <dt className="text-pine">Biaya</dt>
             <dd className="tnum text-right font-bold text-ink">
               {formatCurrency(booking.price)}
             </dd>

@@ -20,7 +20,7 @@ export function AdminTabBar() {
               end={end}
               className={({ isActive }) =>
                 `flex h-16 flex-col items-center justify-center gap-1 text-label transition-colors ${
-                  isActive ? 'text-pine' : 'text-ink/55'
+                  isActive ? 'text-click' : 'text-card/55'
                 }`
               }
             >

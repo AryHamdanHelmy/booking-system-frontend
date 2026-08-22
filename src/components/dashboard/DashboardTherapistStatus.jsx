@@ -34,7 +34,7 @@ export function DashboardTherapistStatus({ therapists = [], bookings = [] }) {
           <div
             key={therapist.id}
             className={`rounded-xl border p-3 transition-colors ${
-              busy ? 'border-moss bg-pine/5' : 'border-line bg-white'
+              busy ? 'border-line bg-card/20' : 'border-line bg-white'
             }`}
           >
             <div className="flex items-center gap-1.5">
@@ -44,7 +44,7 @@ export function DashboardTherapistStatus({ therapists = [], bookings = [] }) {
                   busy ? 'bg-moss' : 'bg-ink/25'
                 }`}
               />
-              <p className="truncate text-title text-pine">{therapist.name}</p>
+              <p className="truncate text-title text-ink">{therapist.name}</p>
             </div>
 
             {busy ? (
@@ -52,7 +52,7 @@ export function DashboardTherapistStatus({ therapists = [], bookings = [] }) {
                 <p className="mt-2 truncate text-label text-ink/70">
                   {ongoing.customer?.name}
                 </p>
-                <p className="tnum mt-0.5 text-label font-semibold text-clay">
+                <p className="tnum mt-0.5 text-label font-semibold text-ink/65">
                   selesai {formatTime(ongoing.end_at)}
                 </p>
               </>

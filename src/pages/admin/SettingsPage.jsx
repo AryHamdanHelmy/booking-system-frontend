@@ -76,7 +76,7 @@ export default function SettingsPage() {
   const isTherapistTab = tab === 'therapists';
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-5 pt-14 md:pt-0">
       <header>
         <h1 className="text-2xl font-extrabold leading-tight text-ink md:text-3xl">
           Pengaturan
@@ -94,7 +94,7 @@ export default function SettingsPage() {
             onClick={() => setTab(item.key)}
             className={`-mb-px border-b-2 px-3 py-2.5 text-sm font-semibold transition-colors ${
               tab === item.key
-                ? 'border-pine text-pine'
+                ? 'border-card text-ink'
                 : 'border-transparent text-ink/50 hover:text-ink'
             }`}
           >

@@ -37,7 +37,7 @@ export function ReportTransactionList({ transactions = [] }) {
         return (
           <section key={date}>
             <div className="flex items-baseline justify-between gap-3 px-1">
-              <h3 className="text-sm font-bold text-pine">{dayLabel(date)}</h3>
+              <h3 className="text-sm font-bold text-ink">{dayLabel(date)}</h3>
               <span className="tnum text-label text-ink/55">
                 {formatCurrency(subtotal)}
               </span>

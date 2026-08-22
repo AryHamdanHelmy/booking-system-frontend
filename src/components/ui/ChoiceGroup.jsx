@@ -34,7 +34,7 @@ export function ChoiceGroup({ options, value, onChange, columns = 2 }) {
               }
               ${
                 selected
-                  ? 'border-pine bg-pine text-white'
+                  ? 'border-line bg-click text-white'
                   : 'border-line bg-white text-ink hover:border-pine'
               }`}
           >
@@ -42,7 +42,7 @@ export function ChoiceGroup({ options, value, onChange, columns = 2 }) {
               <Icon
                 size={22}
                 strokeWidth={1.75}
-                className={selected ? 'text-white' : 'text-pine/45'}
+                className={selected ? 'text-white' : 'text-card'}
               />
             )}
 

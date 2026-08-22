@@ -26,7 +26,7 @@ export default function RevenuePage() {
   }
 
   return (
-    <div className="space-y-5 lg:space-y-6">
+    <div className="space-y-5 md:space-y-6 pt-14 md:pt-0">
       <header>
         <h1 className="text-2xl font-extrabold leading-tight text-ink lg:text-3xl">
           Laporan

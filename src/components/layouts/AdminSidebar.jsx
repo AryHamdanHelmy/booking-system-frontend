@@ -7,7 +7,7 @@ export function AdminSidebar({ user, onLogout }) {
   return (
     <aside className="fixed inset-y-0 z-30 hidden w-60 shrink-0 flex-col border-r border-line bg-white md:flex">
       <div className="px-5 py-7">
-        <p className="text-title text-ink">Refleksi</p>
+        <p className="text-title text-card">Refleksi</p>
         <p className="mt-0.5 text-label text-ink/45">Panel operasional</p>
       </div>
 
@@ -21,8 +21,8 @@ export function AdminSidebar({ user, onLogout }) {
                 className={({ isActive }) =>
                   `flex items-center gap-3 rounded-lg px-3 py-2.5 text-label transition-colors ${
                     isActive
-                      ? 'bg-pine text-white'
-                      : 'text-ink/55 hover:bg-pine/10 hover:text-pine'
+                      ? 'bg-card text-white'
+                      : 'text-ink/55 hover:bg-card/10 hover:text-card'
                   }`
                 }
               >

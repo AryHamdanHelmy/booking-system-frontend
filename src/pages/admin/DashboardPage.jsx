@@ -101,7 +101,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Kolom kanan di desktop, menumpuk di bawah pada HP */}
-        <div className="space-y-15">
+        <div className="space-y-6.5">
           <DashboardWalkinButton onClick={walkin.open} />
 
           {selesai.length > 0 && (

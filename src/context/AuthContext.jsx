@@ -1,13 +1,15 @@
 import { createContext, useCallback, useEffect, useMemo, useState } from 'react';
 import { authApi } from '@/api/authApi';
 import { clearToken, getToken, setToken } from '@/api/client';
+// Diberi nama lain agar tidak bentrok dengan properti isStaff di bawah.
+import { isStaff as cekStaff, ROLE } from '@/constants/roles';
 
 export const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   // Wajib ada. Saat halaman di-refresh, pengecekan token ke server butuh
-  // waktu sesaat — tanpa ini admin terlempar ke login padahal sudah login.
+  // waktu sesaat — tanpa ini pengguna terlempar ke login padahal sudah login.
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -42,6 +44,13 @@ export function AuthProvider({ children }) {
     return loggedIn;
   }, []);
 
+  const register = useCallback(async (payload) => {
+    const { token, user: created, message } = await authApi.register(payload);
+    setToken(token);
+    setUser(created);
+    return { user: created, message };
+  }, []);
+
   const logout = useCallback(async () => {
     try {
       await authApi.logout();
@@ -52,8 +61,17 @@ export function AuthProvider({ children }) {
   }, []);
 
   const value = useMemo(
-    () => ({ user, loading, login, logout, isAuthenticated: user !== null }),
-    [user, loading, login, logout],
+    () => ({
+      user,
+      loading,
+      login,
+      register,
+      logout,
+      isAuthenticated: user !== null,
+      isStaff: cekStaff(user?.role),
+      isCustomer: user?.role === ROLE.CUSTOMER,
+    }),
+    [user, loading, login, register, logout],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

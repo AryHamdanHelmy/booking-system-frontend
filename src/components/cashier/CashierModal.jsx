@@ -67,7 +67,7 @@ export function CashierModal({ isOpen, booking, onClose, onPaid }) {
       }
     >
       <div className="space-y-5">
-        <div className="rounded-xl border border-line bg-card/20 px-4 py-3">
+        <div className="rounded-xl border border-line bg-card px-4 py-3">
           <p className="text-title text-ink">{booking.customer?.name}</p>
           <p className="mt-0.5 text-label text-ink">{booking.service?.name}</p>
           <p className="tnum mt-0.5 text-label text-pine">

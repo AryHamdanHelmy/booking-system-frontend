@@ -15,7 +15,7 @@ export function DashboardSummaryBar({ date, summary }) {
   const conflicts = summary?.conflicts ?? 0;
 
   return (
-    <section>
+    <section className='pt-14 md:pt-0'>
       <h1 className="text-heading text-ink lg:text-3xl">
         Hari ini
       </h1>

@@ -23,10 +23,10 @@ export const STATUS_LABEL = {
 /** Kelas Tailwind per status, dipakai BookingStatusBadge. */
 export const STATUS_STYLE = {
   pending:   'bg-line text-ink/70',
-  confirmed: 'bg-pine/10 text-pine',
+  confirmed: 'bg-pine/20 text-pine',
   ongoing:   'bg-moss text-white',
-  completed: 'bg-ink/8 text-ink/55',
-  cancelled: 'bg-clay/10 text-clay',
+  completed: 'bg-white/20 text-ink/55',
+  cancelled: 'bg-clay/20 text-clay',
   no_show:   'bg-clay text-white',
 };
 

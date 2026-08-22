@@ -29,7 +29,7 @@ function Chips({ options, value, onChange, label }) {
           className={`h-9 shrink-0 rounded-lg border px-3 text-label
             transition-colors ${
               value === option.value
-                ? 'border-moss bg-pine text-white'
+                ? 'border-line bg-card text-white'
                 : 'border-line bg-white text-ink/60 hover:border-moss'
             }`}
         >

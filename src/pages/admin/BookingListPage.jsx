@@ -41,7 +41,7 @@ export default function BookingListPage() {
   const lastPage    = meta?.last_page ?? 1;
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-5 pt-14 md:pt-0">
       <header>
         <h1 className="text-heading text-ink md:text-3xl">
           Booking

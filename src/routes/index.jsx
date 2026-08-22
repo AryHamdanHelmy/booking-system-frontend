@@ -11,6 +11,9 @@ import ProtectedRoute from './ProtectedRoute';
 import BookingPage from '../pages/public/BookingPage';
 import BookingStatusPage from '../pages/public/BookingStatusPage';
 import BookingListPage from '../pages/admin/BookingListPage';
+import CustomerLoginPage from '../pages/auth/CustomerLoginPage';
+import RegisterPage from '../pages/auth/RegisterPage';
+import MyBookingsPage from '../pages/public/MyBookingsPage';
 
 export default function AppRoutes() {
   return (
@@ -19,6 +22,12 @@ export default function AppRoutes() {
       <Route element={<PublicLayout />}>
         <Route path={ROUTES.BOOKING} element={<BookingPage/>} />
         <Route path="/booking/:code" element={<BookingStatusPage />} />
+        <Route path={ROUTES.CUSTOMER_LOGIN} element={<CustomerLoginPage />} />
+        <Route path={ROUTES.REGISTER} element={<RegisterPage />} />
+      
+        <Route element={<ProtectedRoute allow="customer" />}>
+          <Route path={ROUTES.MY_BOOKINGS} element={<MyBookingsPage />} />
+        </Route>
       </Route>
 
       <Route path={ROUTES.LOGIN} element={<LoginPage />} />

@@ -102,7 +102,7 @@ export function DashboardSessionCard({
           </Button>
         )}
 
-        <span className="tnum ml-auto text-sm font-semibold text-ink/60">
+        <span className="tnum ml-auto text-sm font-semibold text-pine/80">
           {formatCurrency(booking.price_snapshot)}
         </span>
       </div>

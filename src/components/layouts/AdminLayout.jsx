@@ -19,15 +19,15 @@ export default function AdminLayout() {
 
       <div className="flex min-h-dvh flex-col md:pl-60">
         {/* Header ringkas, hanya di HP. Di desktop identitas ada di sidebar. */}
-        <header className="flex h-14 items-center justify-between border-b border-line
+        <header className="flex fixed inset-x-0 top-0 z-30 h-14 items-center justify-between border-b border-line
           bg-layout px-4 lg:hidden">
-          <span className="text-label uppercase tracking-[0.18em] text-pine">
+          <span className="text-label uppercase tracking-[0.18em] text-click">
             Refleksi
           </span>
           <button
             type="button"
             onClick={handleLogout}
-            className="text-label text-pine/55"
+            className="text-label text-click/55"
           >
             Keluar
           </button>

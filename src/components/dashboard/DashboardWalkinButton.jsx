@@ -14,7 +14,7 @@ export function DashboardWalkinButton({ onClick }) {
         onClick={onClick}
         aria-label="Mulai walk-in"
         className="fixed bottom-20 right-4 z-20 flex h-12 w-12 items-center justify-center
-          rounded-full bg-pine/70 text-white backdrop-blur-xs shadow-lg shadow-ink/20
+          rounded-full bg-click/70 text-white backdrop-blur-xs shadow-lg shadow-ink/20
           transition-colors hover:bg-ink lg:hidden"
       >
         <IoWalk size={24} strokeWidth={1.75} />

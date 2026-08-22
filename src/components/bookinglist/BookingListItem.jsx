@@ -33,7 +33,7 @@ export function BookingListItem({ booking }) {
       </div>
 
       <div className="mt-3 flex flex-wrap items-center justify-between gap-2
-        border-t border-cardOn pt-3 text-label">
+        border-t border-line pt-3 text-label">
         <span className="text-ink">
           {booking.service?.name}
           <span className="text-pine">
@@ -42,7 +42,7 @@ export function BookingListItem({ booking }) {
           </span>
         </span>
 
-        <span className="tnum text-label text-ink">
+        <span className="tnum text-label text-pine">
           {formatCurrency(booking.price_snapshot)}
         </span>
       </div>

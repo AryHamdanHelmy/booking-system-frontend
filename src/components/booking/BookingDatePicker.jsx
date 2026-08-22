@@ -31,7 +31,7 @@ export function BookingDatePicker({ value, onChange }) {
               className={`flex min-w-14 shrink-0 flex-col items-center rounded-lg border
                 px-3 py-2 transition-colors ${
                   selected
-                    ? 'border-pine bg-pine/8 text-pine'
+                    ? 'border-line bg-click text-pine'
                     : 'border-line bg-white text-ink hover:border-pine'
                 }`}
             >

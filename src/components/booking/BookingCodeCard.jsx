@@ -43,12 +43,12 @@ export function BookingCodeCard({ booking }) {
   }
 
   return (
-    <div className="rounded-xl border border-pine/25 bg-pine/5 px-5 py-5 text-center">
+    <div className="rounded-xl border border-pine/25 bg-card/10 px-5 py-5 text-center">
       <p className="text-xs font-semibold uppercase tracking-wide text-ink/50">
         Kode booking
       </p>
 
-      <p className="tnum mt-1.5 text-3xl font-extrabold tracking-tight text-pine">
+      <p className="tnum mt-1.5 text-3xl font-extrabold tracking-tight text-ink">
         {booking.booking_code}
       </p>
 
@@ -69,7 +69,7 @@ export function BookingCodeCard({ booking }) {
             target="_blank"
             rel="noreferrer"
             className="inline-flex h-11 flex-1 items-center justify-center gap-2
-              rounded-lg bg-pine px-4 text-sm font-semibold text-white
+              rounded-lg bg-click px-4 text-sm font-semibold text-white
               transition-colors hover:bg-ink"
           >
             <IoLogoWhatsapp size={18} />

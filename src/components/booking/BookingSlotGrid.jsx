@@ -47,8 +47,8 @@ export function BookingSlotGrid({ slots, loading, value, onChange }) {
                   penuh
                     ? 'cursor-not-allowed border-transparent bg-ink/5 text-ink/30 line-through'
                     : selected
-                      ? 'border-pine bg-pine text-white'
-                      : 'border-line bg-white text-ink hover:border-moss'
+                      ? 'border-line bg-click text-white'
+                      : 'border-line bg-white text-ink hover:border-line'
                 }`}
             >
               {formatTime(slot.start_at)}

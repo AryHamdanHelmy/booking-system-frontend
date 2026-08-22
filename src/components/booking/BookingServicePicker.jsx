@@ -18,13 +18,13 @@ export function BookingServicePicker({ services, value, onChange }) {
             className={`flex w-full items-start gap-3 rounded-xl border p-4 text-left
               transition-colors ${
                 selected
-                  ? 'border-pine bg-pine/5'
-                  : 'border-line bg-white hover:border-pine'
+                  ? 'border-line bg-card'
+                  : 'border-line bg-layout hover:border-line'
               }`}
           >
             <span
               className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full
-                ${selected ? 'bg-pine text-white' : 'bg-pine/35 text-pine'}`}
+                ${selected ? 'bg-click text-pine' : 'bg-click/35 text-pine'}`}
             >
               <Icon size={20} strokeWidth={1.75} />
             </span>

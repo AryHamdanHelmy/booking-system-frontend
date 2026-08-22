@@ -1,17 +1,20 @@
 import { useEffect, useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { errorMessage } from '@/api/client';
 import { publicApi } from '@/api/publicApi';
 import { BookingDatePicker } from '@/components/booking/BookingDatePicker';
 import { BookingServicePicker } from '@/components/booking/BookingServicePicker';
-import { BookingTherapistPicker } from '../../components/booking/BookingTherapistPicker';
 import { BookingSlotGrid } from '@/components/booking/BookingSlotGrid';
+import { BookingTherapistPicker } from '@/components/booking/BookingTherapistPicker';
 import { Button, ChoiceGroup, FormField, Input } from '@/components/ui';
+import { ROUTES } from '@/constants/routes';
+import { useAuth } from '@/hooks/useAuth';
 import { useAvailability } from '@/hooks/useAvailability';
 import { useServices } from '@/hooks/useServices';
+import { useTherapists } from '@/hooks/useTherapists';
 import { formatCurrency } from '@/utils/formatCurrency';
+import { displayPhone } from '@/utils/formatPhone';
 import { formatTime, toDateParam } from '@/utils/formatTime';
-import { useTherapists } from '../../hooks/useTherapists';
 
 const genderOptions = [
   { value: 'any',    label: 'Siapa saja' },
@@ -32,16 +35,17 @@ export default function BookingPage() {
   const navigate = useNavigate();
   const { services, loading: loadingServices } = useServices();
   const { therapists } = useTherapists();
+  const { user, isCustomer } = useAuth();
 
-  const [serviceId, setServiceId] = useState('');
-  const [date, setDate]           = useState(toDateParam());
-  const [gender, setGender]       = useState('any');
-  const [startAt, setStartAt]     = useState('');
+  const [serviceId, setServiceId]     = useState('');
+  const [date, setDate]               = useState(toDateParam());
+  const [gender, setGender]           = useState('any');
+  const [startAt, setStartAt]         = useState('');
   const [therapistId, setTherapistId] = useState('');
-  const [name, setName]           = useState('');
-  const [phone, setPhone]         = useState('');
-  const [error, setError]         = useState('');
-  const [pending, setPending]     = useState(false);
+  const [name, setName]               = useState('');
+  const [phone, setPhone]             = useState('');
+  const [error, setError]             = useState('');
+  const [pending, setPending]         = useState(false);
 
   // Pilih layanan pertama secara bawaan agar jadwal langsung tampil.
   useEffect(() => {
@@ -49,6 +53,14 @@ export default function BookingPage() {
       setServiceId(String(services[0].id));
     }
   }, [services, serviceId]);
+
+  // Pelanggan yang login tidak perlu mengetik ulang identitasnya.
+  useEffect(() => {
+    if (!isCustomer || !user) return;
+
+    setName(user.name ?? '');
+    setPhone(user.phone ?? '');
+  }, [isCustomer, user]);
 
   const { slots, loading: loadingSlots } = useAvailability({
     date,
@@ -61,7 +73,6 @@ export default function BookingPage() {
     [slots, startAt],
   );
 
-
   // Slot yang dipilih bisa hilang saat tanggal atau layanan berubah.
   useEffect(() => {
     if (startAt && !slots.some((s) => s.start_at === startAt && s.is_available)) {
@@ -69,16 +80,16 @@ export default function BookingPage() {
     }
   }, [slots, startAt]);
 
+  // Terapis yang dipilih ikut dilepas kalau dia tidak tersedia di jam baru.
   useEffect(() => {
     if (!therapistId) return;
- 
+
     const masihBisa = selectedSlot?.available_therapist_ids?.includes(
       Number(therapistId),
     );
- 
+
     if (!masihBisa) setTherapistId('');
   }, [selectedSlot, therapistId]);
-
 
   const selectedService = useMemo(
     () => services.find((s) => String(s.id) === String(serviceId)),
@@ -98,6 +109,7 @@ export default function BookingPage() {
         service_id: Number(serviceId),
         start_at: startAt,
         preferred_gender: gender,
+        // Kosong berarti sistem yang menentukan.
         therapist_id: therapistId ? Number(therapistId) : undefined,
       });
 
@@ -115,17 +127,17 @@ export default function BookingPage() {
   return (
     <div className="space-y-6 pb-32">
       <header>
-        <h1 className="text-heading text-ink">
+        <h1 className="text-2xl font-extrabold leading-tight text-ink">
           Booking sesi
         </h1>
-        <p className="mt-1 text-label text-ink/55">
+        <p className="mt-1 text-sm text-ink/55">
           Pilih layanan dan waktu. Tidak perlu membuat akun.
         </p>
       </header>
 
       <Section title="Layanan">
         {loadingServices ? (
-          <div className="h-28 animate-pulse rounded-xl bg-line/50" />
+          <div className="h-28 animate-pulse rounded-xl bg-card/50" />
         ) : (
           <BookingServicePicker
             services={services}
@@ -157,6 +169,8 @@ export default function BookingPage() {
         />
       </Section>
 
+      {/* Baru muncul setelah jam dipilih, supaya yang ditawarkan
+          hanya terapis yang benar-benar kosong di jam itu. */}
       {selectedSlot && (
         <Section title="Terapis">
           <BookingTherapistPicker
@@ -168,8 +182,18 @@ export default function BookingPage() {
         </Section>
       )}
 
-
       <Section title="Data Anda">
+        {isCustomer ? (
+          <div className="rounded-lg border border-line bg-white px-4 py-3">
+            <p className="font-semibold text-ink">{user?.name}</p>
+            <p className="tnum mt-0.5 text-sm text-ink/55">
+              {displayPhone(user?.phone ?? '')}
+            </p>
+            <p className="mt-2 text-xs text-ink/45">
+              Diambil dari akun Anda. Booking ini akan masuk ke riwayat.
+            </p>
+          </div>
+        ) : (
         <div className="space-y-4">
           <FormField label="Nama" htmlFor="book-name">
             <Input
@@ -194,7 +218,16 @@ export default function BookingPage() {
               onChange={(e) => setPhone(e.target.value)}
             />
           </FormField>
+
+          <p className="text-sm text-ink/50">
+            Punya akun?{' '}
+            <Link to={ROUTES.CUSTOMER_LOGIN} className="font-semibold text-ink underline">
+              Masuk
+            </Link>{' '}
+            agar tidak perlu mengisi ini lagi dan riwayatnya tersimpan.
+          </p>
         </div>
+        )}
       </Section>
 
       {error && (
