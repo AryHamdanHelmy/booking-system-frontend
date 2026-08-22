@@ -1,4 +1,5 @@
-import { IoClose, IoSearch } from "react-icons/io5";
+import { useEffect, useRef, useState } from 'react';
+import { IoCalendarOutline, IoClose, IoSearch } from "react-icons/io5";
 import { Input } from '@/components/ui';
 import { BOOKING_STATUS, STATUS_LABEL } from '@/constants/bookingStatus';
 import { BOOKING_SOURCE, SOURCE_LABEL } from '@/constants/bookingSource';
@@ -36,6 +37,83 @@ function Chips({ options, value, onChange, label }) {
           {option.label}
         </button>
       ))}
+    </div>
+  );
+}
+
+function formatShort(dateStr) {
+  if (!dateStr) return null;
+  const d = new Date(dateStr + 'T00:00:00');
+  return d.toLocaleDateString('id-ID', { day: 'numeric', month: 'short' });
+}
+
+function DateRangeFilter({ from, to, onChange }) {
+  const [open, setOpen] = useState(false);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const handleClickOutside = (e) => {
+      if (containerRef.current && !containerRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [open]);
+
+  let label = 'Semua tanggal';
+  if (from && to) label = `${formatShort(from)} – ${formatShort(to)}`;
+  else if (from) label = `Dari ${formatShort(from)}`;
+  else if (to) label = `Sampai ${formatShort(to)}`;
+
+  return (
+    <div ref={containerRef} className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className={`flex h-11 w-full items-center gap-2 rounded-lg border px-3 text-left text-title
+          ${from || to ? 'border-pine bg-white text-ink' : 'border-line bg-white text-ink/50'}`}
+      >
+        <IoCalendarOutline size={18} className="shrink-0 text-ink/60" />
+        <span className="truncate">{label}</span>
+      </button>
+
+      {open && (
+        <div className="absolute z-20 mt-2 w-full min-w-[240px] space-y-3 rounded-lg border border-line bg-white p-4 shadow-lg">
+          <div className="space-y-1">
+            <label className="text-label text-ink/50">Dari tanggal</label>
+            <Input
+              type="date"
+              aria-label="Dari tanggal"
+              value={from}
+              max={to || undefined}
+              onChange={(e) => onChange({ from: e.target.value })}
+              className="h-10 w-full"
+            />
+          </div>
+          <div className="space-y-1">
+            <label className="text-label text-ink/50">Sampai tanggal</label>
+            <Input
+              type="date"
+              aria-label="Sampai tanggal"
+              value={to}
+              min={from || undefined}
+              onChange={(e) => onChange({ to: e.target.value })}
+              className="h-10 w-full"
+            />
+          </div>
+          {(from || to) && (
+            <button
+              type="button"
+              onClick={() => onChange({ from: '', to: '' })}
+              className="text-label text-ink/50 underline underline-offset-2 hover:text-ink"
+            >
+              Hapus filter tanggal
+            </button>
+          )}
+        </div>
+      )}
     </div>
   );
 }
@@ -83,25 +161,11 @@ export function BookingFilters({ filters, onChange }) {
         onChange={(source) => update({ source })}
       />
 
-      <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2">
-        <Input
-          type="date"
-          aria-label="Dari tanggal"
-          value={filters.from}
-          max={filters.to || undefined}
-          onChange={(e) => update({ from: e.target.value })}
-          className="h-10 min-w-0 text-sm md:text-title"
-        />
-        <span className="text-sm text-ink/40">s/d</span>
-        <Input
-          type="date"
-          aria-label="Sampai tanggal"
-          value={filters.to}
-          min={filters.from || undefined}
-          onChange={(e) => update({ to: e.target.value })}
-          className="h-10 min-w-0 text-sm md:text-title"
-        />
-      </div>
+      <DateRangeFilter
+        from={filters.from}
+        to={filters.to}
+        onChange={(patch) => update(patch)}
+      />
     </div>
   );
 }
