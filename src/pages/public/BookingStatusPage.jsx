@@ -77,9 +77,9 @@ export default function BookingStatusPage() {
   return (
     <div className="space-y-5">
       {justCreated && (
-        <div className="rounded-lg bg-moss/10 px-4 py-3 text-center">
+        <div className="rounded-lg bg-card px-4 py-3 text-center">
           <p className="font-bold text-pine">Booking berhasil</p>
-          <p className="mt-0.5 text-sm text-ink/60">
+          <p className="mt-0.5 text-label text-ink/80">
             Sampai jumpa di {OUTLET.name}.
           </p>
         </div>
@@ -93,10 +93,10 @@ export default function BookingStatusPage() {
             <p className="text-label uppercase tracking-wide text-pine">
               Jadwal
             </p>
-            <p className="mt-1 font-bold text-ink">
+            <p className="mt-1 text-label text-ink">
               {formatDateLong(booking.start_at)}
             </p>
-            <p className="tnum mt-0.5 text-pine/70">
+            <p className="tnum mt-0.5 text-title text-pine/70">
               {formatTimeRange(booking.start_at, booking.end_at)}
             </p>
           </div>
