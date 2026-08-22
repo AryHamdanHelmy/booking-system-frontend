@@ -38,10 +38,10 @@ export function BookingTherapistPicker({ therapists, availableIds = [], value, o
             type="button"
             onClick={() => onChange(String(therapist.id))}
             aria-pressed={selected}
-            className={`flex min-h-16 flex-col items-center justify-center gap-1
+            className={`flex min-h-20 flex-col items-center justify-center gap-1
               rounded-lg border px-2 py-2.5 text-center transition-colors ${
                 selected
-                  ? 'border-pine bg-pine/8 text-pine'
+                  ? 'border-line bg-card text-pine'
                   : 'border-line bg-white text-ink hover:border-moss'
               }`}
           >
@@ -60,7 +60,7 @@ export function BookingTherapistPicker({ therapists, availableIds = [], value, o
             </span>
 
             {therapist.hint && (
-              <span className="text-xs text-ink/50">{therapist.hint}</span>
+              <span className="text-xs text-pine/70">{therapist.hint}</span>
             )}
           </button>
         );

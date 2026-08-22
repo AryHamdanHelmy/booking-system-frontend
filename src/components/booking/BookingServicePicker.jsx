@@ -44,7 +44,7 @@ export function BookingServicePicker({ services, value, onChange }) {
               )}
 
               <span className="mt-2 flex flex-wrap items-center gap-2">
-                <span className="tnum rounded-full bg-ink/5 px-2.5 py-1 text-xs font-semibold text-ink/70">
+                <span className="tnum rounded-full bg-pine/70 px-2.5 py-1 text-xs font-semibold text-ink/70">
                   {service.duration_minutes} menit
                 </span>
                 <span className="tnum font-bold text-ink">

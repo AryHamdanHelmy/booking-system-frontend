@@ -156,7 +156,7 @@ export default function RegisterPage() {
 
       <p className="mt-6 text-center text-sm text-ink/55">
         Sudah punya akun?{' '}
-        <Link to={ROUTES.CUSTOMER_LOGIN} className="font-semibold text-pine underline">
+        <Link to={ROUTES.CUSTOMER_LOGIN} className="font-semibold text-ink underline">
           Masuk
         </Link>
       </p>

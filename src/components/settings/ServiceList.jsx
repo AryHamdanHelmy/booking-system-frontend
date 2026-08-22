@@ -22,7 +22,7 @@ export function ServiceList({ services, onEdit, onToggleActive, pendingId }) {
                 {service.duration_minutes} menit
                 <span className="text-ink/45"> + {service.buffer_minutes} buffer</span>
               </p>
-              <p className="tnum mt-0.5 text-title text-ink">
+              <p className="tnum mt-0.5 text-title text-pine">
                 {formatCurrency(service.price)}
               </p>
             </div>

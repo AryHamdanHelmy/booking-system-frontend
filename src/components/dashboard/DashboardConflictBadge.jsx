@@ -5,5 +5,5 @@ import { Badge } from '@/components/ui';
  * supaya begitu warnanya muncul maknanya tunggal: jadwal bertabrakan.
  */
 export function DashboardConflictBadge() {
-  return <Badge className="bg-amber/15 text-amber">Jadwal bentrok</Badge>;
+  return <Badge className="bg-pine/70 text-amber">Jadwal bentrok</Badge>;
 }

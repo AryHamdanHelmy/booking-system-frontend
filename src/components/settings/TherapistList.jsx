@@ -20,7 +20,7 @@ export function TherapistList({ therapists, onEdit, onSchedule, onToggleActive, 
                 )}
               </div>
 
-              <p className="mt-1 text-sm text-ink/55">
+              <p className="mt-1 text-label text-pine">
                 {genderLabel[therapist.gender] ?? therapist.gender}
                 {therapist.phone ? ` · ${displayPhone(therapist.phone)}` : ''}
               </p>

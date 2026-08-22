@@ -92,7 +92,7 @@ export default function CustomerLoginPage() {
 
       <p className="mt-6 text-center text-sm text-ink/55">
         Belum punya akun?{' '}
-        <Link to={ROUTES.REGISTER} className="font-semibold text-pine underline">
+        <Link to={ROUTES.REGISTER} className="font-semibold text-ink underline">
           Daftar di sini
         </Link>
       </p>

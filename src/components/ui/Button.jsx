@@ -1,6 +1,6 @@
 const VARIANTS = {
   primary:   'bg-click text-white hover:bg-card/35 hover:text-ink border-click border disabled:bg-card/40',
-  secondary: 'bg-click text-white hover:border-moss disabled:text-ink/40',
+  secondary: 'bg-click/70 text-white hover:border-line disabled:text-pine/40',
   ghost:     'text-ink/70 hover:text-ink hover:bg-ink/5',
   danger:    'bg-clay text-white hover:bg-clay/85 disabled:bg-clay/40',
   warning:   'bg-amber text-white hover:bg-amber/85 disabled:bg-amber/40',
