@@ -57,7 +57,7 @@ export default function BookingListPage() {
         <button
           type="button"
           onClick={() => setFilters(INITIAL)}
-          className="text-label text-pine underline"
+          className="text-label text-ink underline"
         >
           Hapus semua filter
         </button>

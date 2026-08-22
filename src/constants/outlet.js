@@ -4,6 +4,6 @@
  */
 export const OUTLET = {
   name: 'Refleksi',
-  whatsapp: '628123456789',
+  whatsapp: '6289642798310',
   address: null,
 };
